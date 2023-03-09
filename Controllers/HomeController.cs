@@ -19,19 +19,23 @@ namespace onlineBookstoreApp.Controllers
             repo = temp;
         }
 
-        public IActionResult Index(int pageNum = 1)
+        public IActionResult Index(string category, int pageNum = 1)
         {
-            int pageSize = 10;
+            int pageSize = 2;
             var x = new IndexViewModel
             {
                 Books = repo.Books
+                .Where(p => p.Category == category || category == null)
                 .OrderBy(b => b.Title)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumEntries = repo.Books.Count(),
+                    TotalNumEntries = 
+                    (category == null 
+                    ? repo.Books.Count()
+                    : repo.Books.Where(x => x.Category == category).Count()),
                     EntriesPerPage = pageSize,
                     CurrentPage = pageNum
                 }

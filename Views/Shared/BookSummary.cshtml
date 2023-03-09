@@ -3,7 +3,7 @@
     <div class="bg-faded p-1">
         <h4>
             @Model.Title
-            <span class="badge badge-pill badge-primary" style="float:right">
+            <span class="badge badge-pill bg-primary badge-primary m-3" style="float:right">
                 <small>@Model.Price.ToString("c")</small>
             </span>
         </h4>
@@ -15,4 +15,11 @@
         Category: @Model.Category <br />
         Number of pages: @Model.PageCount <br />
     </div>
+    <form method="post" asp-page="/Purchase">
+        <input type="hidden" asp-for="@Model.BookId" />
+        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+        <span class="card-text">
+            <button type="submit" style="float:right" class="m-3 btn btn-success btn-sm float-end">Add to cart</button>
+        </span>
+    </form>
 </div>

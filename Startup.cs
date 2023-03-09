@@ -33,6 +33,10 @@ namespace onlineBookstoreApp
            });
 
             services.AddScoped<IOnlineBookstoreRepository, EFOnlineBookstoreRepository>();
+
+            services.AddRazorPages();
+
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,12 +55,20 @@ namespace onlineBookstoreApp
 
             app.UseStaticFiles();
 
+            app.UseSession();
+
             app.UseRouting();
 
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("categorypage", "{category}/Page{pageNum}",
+                    new { Controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute("paging", "Page{pageNum}", new { Controller = "Home", action = "Index" });
+                endpoints.MapControllerRoute("category", "{category}", new { Controller = "Home", action = "Index", pageNum = 1 });
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
             });
         }
     }

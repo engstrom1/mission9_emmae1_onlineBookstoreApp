@@ -3,25 +3,55 @@
     <head>
         <meta name="viewport" content="width=device-width" />
         <title>@ViewData["Title"]</title>
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     </head>
     <body>
         <div class="bg-dark text-white p-2">
             <span class="navbar-brand ml-2">BOOKLOVERS HAVEN</span>
         </div>
         <div class="row m-1 p-1">
-            <div id="categories" class="col-3">
-                <b>Announcements and Events: </b><br />
-                Join our bookclub! Meetings every Tuesday 
-                <br /><br /><br />
-                Philosphy and Fries: Semi weekly debates. Read the excerpt and bring your appetite 
-                <br /><br /><br />
-                Stories with the Smalls: Bring your kindergarten aged child for storytime every Wednesday at 2
+            <div class="col-3">
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Search By Category
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion">
+                            <div class="card-body">
+                                <div>
+                                    <vc:categories></vc:categories>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Announcements and Events
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
+                            <div class="card-body">
+                                Join our bookclub! Meetings every Tuesday
+                                <br /><br /><br />
+                                Philosphy and Fries: Semi weekly debates. Read the excerpt and bring your appetite
+                                <br /><br /><br />
+                                Stories with the Smalls: Bring your kindergarten aged child for storytime every Wednesday at 2
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-9">
                 @RenderBody()
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
 </html>
