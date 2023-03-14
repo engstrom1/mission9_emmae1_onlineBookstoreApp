@@ -4,10 +4,18 @@
         <meta name="viewport" content="width=device-width" />
         <title>@ViewData["Title"]</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha512-ZYg+hQvLlM0W9C3P6vTpes5LmJ66G2EsroxDNzwD6qiulckldb29eD9I672HL2X+LH5nRhY1sQqZLJGB+aUUPg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
         <div class="bg-dark text-white p-2">
-            <span class="navbar-brand ml-2">BOOKLOVERS HAVEN</span>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col navbar-brand"> BOOKLOVERS HAVEN</div>
+                    <div class="col-3 text-right">
+                        <vc:cart-summary />
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row m-1 p-1">
             <div class="col-3">
